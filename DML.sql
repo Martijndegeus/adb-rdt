@@ -6,3 +6,10 @@ SELECT CrimeCode, CrimeCodeDescription
 FROM import_table
 GROUP BY CrimeCode, CrimeCodeDescription
 ORDER BY CrimeCode;
+
+TRUNCATE TABLE premises;
+INSERT INTO premises(PremiseCode, PremiseDescription)
+SELECT PremiseCode, PremiseDescription
+FROM import_table
+GROUP BY PremiseCode, PremiseDescription
+ORDER BY PremiseCode;
