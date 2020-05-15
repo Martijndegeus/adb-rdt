@@ -38,8 +38,8 @@ WHERE StatusCode IS NOT NULL
 GROUP BY StatusCode, StatusDescription
 ORDER BY StatusCode;
 
-SELECT DRNumber, ROUND((LENGTH(i1.MOCodes) - LENGTH(REPLACE(i1.MOCodes, ' ', ''))) / LENGTH(' ')) + 1 AS count
-FROM import_table i1 JOIN import_table i2
-WHERE MOCodes <> '';
-
-# SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(MOCodes, ' ', 1), ' ', -1) AS MoCode FROM import_table WHERE DRNumber = 151520686;
+TRUNCATE crimes;
+INSERT INTO crimes(DRNumber, DateReported, DateOccured, TimeOccured, AreaID, ReportingDestrict, CrimeCode, MOCodes, VictimAge, VictimSex, VictimDescent, Premiscode, WeaponUsedCode, StatusCode, CrimeCode1, CrimeCode2, CrimeCode3, CrimeCode4, Address, CrossStreet, Location)
+SELECT DRNumber, DateReported, DateOccured, TimeOccured, AreaID, ReportingDestrict, CrimeCode, MOCodes, VictimAge, VictimSex, VictimDescent, Premiscode, WeaponUsedCode, StatusCode, CrimeCode1, CrimeCode2, CrimeCode3, CrimeCode4, Address, CrossStreet, Location
+FROM import_table
+WHERE DRNUmber > 0;
